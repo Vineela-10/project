@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Online Book Store</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/js/ccbp-ui-kit.js"></script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+body{
+    background-color: burlywood;
+}
+.bg-container {
+    background-image: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAIAAwAMBIgACEQEDEQH/xAAcAAACAgMBAQAAAAAAAAAAAAAFBgMEAQIHAAj/xABFEAACAQMCAwMIBAwEBwEAAAABAgMABBEFIQYSMRNBURQVIjJhcYGRB5LB0SMzQkNSYnKCobHS4RYkNDVFU4OTlKLCJf/EABgBAAMBAQAAAAAAAAAAAAAAAAECAwAE/8QAJhEAAgICAgEEAgMBAAAAAAAAAAECEQMSITFBEyIyUQRhQnGBI//aAAwDAQACEQMRAD8A55/hQlSRKaF2zGxu3jkyAh2IFS2+q6xJG0kXM6KPSIHSo4dRu53YLArsetc7c2qlydK07QYtbi7uUeaZSLdR6JPfRDSr9UkY9xjqtodwZm8n1VDDbeNNFvpfDRyYb8LkY3ekq3Z1LKo43H7COizI2iWijrzCrDZM85D7Y6VFJLpWnaYnZXiuITnAPWhI4nsSspCnL9M0JJ0RxtWVdMhYXMztt6ZxRXTOs5xtg0EtNThL9cZJNX7LVrSIThm3I2oeTJVYsXCI9rfMV6O1GroKvDFsAPyaCTyFbW5QKS0jEjHtoxcTwtoVtFn0wu4qzftBFP1UxTuhkDFPnDEeNHts94FJLRM0xGDjBxkU1cPzmG2gSR9gOhoS6Kfx/wBC+lL6d8B0U9KVr7Ma3Dq/I29M/DciSS37cwwX2yaVtWXmmugu4zVcHZzZuIMn0RO0sCztkk7+3et5u1jjh7M4XnxWeHl//POe776tXsfJDBy5OZK5vyHU2U/H5xIF8QX11bXUQjlZRy5wKL6bqM6vC/aE5TJBoDxV/q4f2D9lXrTMkcHJ6wSn/HV4hs/zLWsX/l+pwGRNhn7Kr3kyxXYWJQBkVDIM6lAPnWL8f50e8VN98FIxT4DMZRnKMvqjNV5LyKJ8GPapYvx7/sChUpDXKKehIoKTNKCtBxZIDHztHitlnsWcJnDHpUd5H2cJUeFDrkAdiwXBx1rSm4qxY4lJ0a6PbiLSbpCgwQTVbTLZQiOiDGKmsdSskimjNwpDrgVJpl3Z28YQzLgdKzbsHGjRV10KkAHLgttQqLQLm4tTOpAGelGNcnhuJLYQMGBkHSmBoxDYMq+Aq0CcuhGHD+ohSVj5gBk1o+k6jEnaPE4Ud9dN0dQ1nMSN8YqTWYoxYMpG3LQlJopCEW9TmEFlqEsZlhXmUdTnpWIVvHlCLGXduijcmnHRYkjtbxEG2M/wqTgaCObUp3ZQxj6E+6mTsnLgVX8stceUQsg9oq1Fe8mOeI/EUxcYKheGN2CZlGPbvUd/b24VucAEJtQDBbSooahyTaE86RgMOlLMuqTEIpBXkpy0gRzGKI4ZAMkeNFb3heyvsOQIzg9BiltBkmjnEGqzW/N2MjIW64PWsectzzs2T1qTXbMWWotBF6Sqa0awgksTNuCDvTtKIiuSJYNWMSckchANXF1h2QKZc46VHqnD9tb2kc1uxyRk+2l1vwUvLk9cVlBT5Gk5Y/axjuG84SI8jjIGKLaXFNEwMZVtuUClvTYTLdRwh8FhkGnXQYI0bmkOQj4NKlp7QOe3LA+oc+l6hFLcqDnJAqnealFc3IljHKARtRT6QLJ7+9tltW6Zz/Clv/C2piZ0RweUZz41tY9tjLLJeBhg1WAysSOqAVSM6G5jfuDA0Nh0DVuflUA/Grb6TqqAL2JY+yl0X2N6rlyMdzqFrMrASdVHfVS8nhaCAq2460uSw39sfw1uy/CrFu1xt2kBGfEUJY9lRo5adgQaRJ6OTs1WLzSDZ2yzSE8h7xRA5TkydgaKa7Es3Dhcb4ANV2d8mnjjG6AunIB5N2eWBkHWnkkmyfm67Uh2M7Q2MDrjIO1FJdVmWIDn2bc0Yk5U0Pujf6KXxzWeIjy2PvApAg4lvLaJinq561Jc8UXF5CFlcYqck2UhJRlbGDSV5be+bux9lWPo3XN1dsehc0qQ8RNBFJEoUiTqfCp9E4q80doY0BD700U0TnyGuNxzapYoehnrGuj0mz17Ogmp8RrqNxb3EsYHZNzD216711L5m2C5GBRHw1GbbfgJ8LgiRGY7b/zp/jUMi+41zTS7kaYI53y0WaY140s1VQDj30jXIGJvFqcmtSn2moV/2mf2b1niG6i1C+M0bAZPWtUlhSymgeQczLtT5HdULiVXYR1OQSabAR+iPspWu4VKSOT6YOaNTzxvYRRB/SXrigt7DJzt2XpKwpsfCG/I5kv6CFgeSSzuV9UNgn+FN8O0cwXbLBqTbeORLARK/fnfuprsGjyvNL6yjNSyv/omJCPtLN2c36Z/RH2UWtTGL5uYgAxigeoTxi/TDg+jvU0sva3KdiwJKY61GR0OqCl6QAPJWHPUFjJcJdfhgCuB8KoWVvdNNknA5vtol5Jcm7VQ+zLuaqkkiMZWivxJJz2Mjqo5kBYECh+l3HlHDZu5lUyKM7Cr2vWU1tY3PPJlShxQXhZu34TuI/0crVFFNE5P3AVNSsZXUDmO+1XZNWs30qWzZmXPeRRWPRrOGKV0hAw3XFDL2zgaNsoAScdKKx/TKubl2QWVvZm2iiJzhtqOR6FpVzFGbtmUFgAc4pcKwpNEhzsDTFMltJY2iyylN/GlS4YJfJIvjhfSGsLiATlY+XKnm3zSxecKW1va28qXjsXGWyaKX1taxWEpW+O67DPsqvp8a9io7Uyry9SelaNoOttABdL7Qzx2jmTs1ySaJWmhjzdFqLZKOM8hrNiezXV5F6KCP4UclHZcO2Ef6o/lVsq1ROK9zsHxcPveRpMQsaZGFqPXtCTSYu3Z8oNyNqctDg7a2UnoMGg30gAHT3U9ABSYVvBtj5WoySQF00rrVlHaW645SNzVfUNF8nmMLseYeBq19HIzJKfAirWtL2urTMD0pZcNmitkgBNaWdtblpXcyZ6Cqh03yuZUsu0ZyMkE91GtJ02PUNUWCWUr2jBAQudycDvrq2kfR3bWUvbSz/hAvL1LbfDAqlJJCOXaOAywSRTGLmbtQccvtrN1Fc2xVR2hJGfVNfTdnwvo9oS62/PIdyThc/BcZ+Oa5xLp0CyurKwYMQRznY599K5A+XXBy2GW7DBezf4qabOHENzcxxzbZ8RTL5vgP5J+ua95ut+9W+saVuxuV5Fbj+J9P1KFLVWx2Z5iKWE1K+R+ZXkUjv3rp/m627kP1jWp062PVW+u331rXlAe32c7teIdTV+WORmJ7hRCLifVUbmdzldjkU4xWNrFOw7LOUDAnc9cH7PnUiaVZXELFogcHwpJSinVDwjJrsTr3ia+uozHcnKkYOBVbTdZ8ht3t4hyxykk7U4Xml2RZG7EZ6dKqQWNtNJIj24HIdjileRRXQ6xuXkntpzNpxP5RoRepIIyxG3N3UBGs6hb5hQgoOlZGuXzei6AgmuhNpElVl6N4fKFMozhe+m2zfR5o4RdSoAvjXPbu/dbzmCDp0q0t5eyR9olizJ4gZFI1KuENcW7fgadZGlSqywFSm4GK3uY7K3EYs2HKVyQPGgj6dd31khtIwtwdyh2xQSRdWikZGicMpwQFrQTkgucYNBmMlNK1Mn1pJDgfKjWp3CNp9lGh9UAfypLSXUA3I0b7/kkdaIhNSYfhIiAvTeqZG5cE4uKb/Z0/h6REtguRsg76VvpClDWrhCPDGaVvL9QhflEzqTtgGvXMs7p/mWLZ/SPfSYk8aoaUoydh36OVwkxO2/2VvqkoTU58elQ+dZ9Mt7Y2z9k0q5OO/aoks9YmmEkUDyu/QKpJJ9gFCXLY0Go0MPCOk388sl3BZyMnMDHIBkZBrskmpSYBTT7qQnqByr/ADNc0+iuTVbDXZ4NTtpoLCWIl2ljKgSDHLjI8M/KusjUNL/Ku4fnRuycuwLNquo4PJo0pH61wn2Gk/VLbWZr2WePSYI0c55TNjHv610Z9X0WMenqFqo/WlAqrJr3DbZzqtjn2yihwKmzl+pNrGmrG8mlRPG/5xZ9lPgds1ROsahjbS4v+/8A2rofFWtcPjQbtYtQs5XkTlRY35vSzt06ePwrmnl1p0NxD9akbfgqkmTedtRJ/wBsi/8AIP3VG2sagOulxn3T/wBqkEicpbPojv5Gx88Vo1zB3SL8FP3VrZnFGnni89Z9OAxnAWQHr7aJcP3qXodlDKcnmRuqHvBoUdQsgeVrqIHwJqpp2rrpepXU/ZO8EjZHIhOTgZoNWNFUhmvVwxB7jmore2VY2mViS3dQqfiJbzeO3kHjlcYqa21yLybsuxfINJJNxaQ6kk02JkBjmvlhwCrdTmr13YRC6jhikUDlyTS7cuBcuYyQB0rTtXznnbPjmuxVSOV9lq7jzcn5ZFPuhcg0dFflPTrXOlkPXJqdLyeNeVJXA8A1B3VFVVHU9KEcepqc4BUjaqFuqtq9ypHMO0PWkKLVbxJFdZ35geuac9BlE0olzlmGSafGuGRzfJNFy9giDlwihh02oPZ3LyR3SswPLRa+fDYPhSxppyuoe81J9nTFL0r/AGHNK0+2uLZ5Rh5cbeytFs7aUQx3oAZcnpQvhe6MPOnMcHO2aI3uHkjLNgDJPtrYlc3Fi56jjUv2Q6lIl0HLKAIPRTFXtFv7gxI6SYMbAgUOtSs9nMc7c21NH0dWEV5PPA55XiHaROqqT1APrA+IpO2zPjU6wlghVSQoyAcYrfyFB3D5UMFvqAHo6pck/rJGf/kV4DUx/wAQ5vfCppKFthF7BG6gEeFVJ9EtJesKfKoTJqyn0bq3b325/qrRptZ/Jns/3oW/qrBsrXHC1s2SqKM+yhknCsanIiU4PUCir3WvrsPNsh8PTT76gfU9eXPPp1k2P0blv6KWgpgbiSyaLQHG4VGXbPtx9tJHYJnPKPlTxxDearqNibbyARBnBYiXIIG+OnjSNcyXMEjR+TrzLs3NJ3/KgPZ7yePPqL8q81rHjdB8agW8uAfSgjHuc/dVi1na6se2K8rFivLnpvijZqI9JRIFnWT8X2hZST3EA/bUiXNnEjHmGCar3CXHZsC45FXlA+FCpyAFBq6eisWOOOZ6vwUl4avJpWxLFn21mThe/TviPuam22Qhy2CBU0zbdKCm6E0Qjw8PahJL2aqmf2qkfhnVUBPYqceDim+wH+bJI6Cr8sg5W99b1HQaRz5OHtUYkC2zgZPpCj/Di3VkwE9uw6ijscwQn2rVTnPUE4po5GkCUEzF65eQgI3TPSgenQzQLes8L4l9XajRJc9d63U8qcppNnY6dR1FvSrWa3cu8cmD7KJMouQO0MiBc4HL1otGwCb+FYLqXXfvrRk4y2Rp1OOrAK9rDbSRiNwSdhim3gAXkVu81ivJdqSspkGwU9ABjfOKr3TKZVOe6j3Dd9DaSP2hyHXoCB09p2pJMPDoOrqXEC9VtG94NbeeNbXdrS1PxIrPneyJ6j66f1Vt5xs2HU/LP8qnbG1iaefNUH4zS4G905H2VuvEF0oy+ksf2Zx9tZ8stD+n8I2+6tTdWne+PepFbZg1ib/4jK7SaXcL7pENaHiWy6S2l4n/AE8/yrU3Njj/AFEXu58VG5tJBtNCf3xR2YNEZk4h0dtnaZT7YTSJxReW7anJLZo8kbgb4xvjenR7S3cbMh9xBoRrulJJp0/Zgc6jmGPZvWtja0IUl7IVDCMDLBevjtRexsimnohY5Mhc+zJJoMqCeSNEzhXDFgNtjnFHvLUXbNZmi6sgvYDHbuwJJ8KWrtZWk9GN9vZTet1G+ST3VhJYSp2HyqylsqYIy9Nt/Zvy8qACtGGaHLfzPgMc++txeP3gH41LcFF2JfTNT8mx2zQ6K8YHOFqbzpOAR2UZHjQ3DqWOUZ9XetCmCagF+5OSiA++vPfv3op91bdB1JlQeFblQDuMVX8s6HkG1Z8vBOStZzRlEtiPbNRSJhh99eXVABgopqGS9jc+rj3GjuqBqWXHMcgd1T6WqG7UyglR6ozjf5GqC6gqjHIPnUsGqRwnJgDE9CTjFK5oKQyHsT+R9v3Vqywf8kn90ffQTz2jfmMfv1ka0O6A/WpbQ3IYEVsesAz7VH31kR2+do8e0Cgraz4Qn61eOs7fisfvVtkbkNNDbt6ymoHsbR+4ChXnoH80PnWr6wx6RD61a0YvyaVbn1XC+7NQPoyn1Zv/AHIqk2qyY2hH1/7VGdTlI/Ej6/8AataNyE4dPuLdeWKQYHQc4+2l8QXclzIZUy5OWOBjNXU1Fu+LHxrKamY2LCJd/GtsBopyW8y/k491SRwS9lupqeTU2b82PhUfnNgvL2a49tHZAP/Z");
+    height: 200vh;
+    background-size: cover;
+}
+
+.tourism-card {
+    text-align: center;
+    background-color: white;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    padding: 5px;
+}
+
+.button {
+    color: rgb(142, 161, 37);
+    background-color: #25b1cc;
+    width: 138px;
+    height: 36px;
+    border-width: 0px;
+    border-radius: 20px;
+}
+
+.main-heading {
+    font-family:sans-serif;
+}
+
+.paragraph {
+    font-family:cursive;
+}
+
+.favourite-places-bg-container {
+    background-image: url("https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/towerbg.png");
+    height: 100vh;
+    background-size: cover;
+    padding: 24px;
+}
+
+.favourite-places-heading {
+    color: white;
+    font-family: "Roboto";
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.favourite-place-card-container {
+    background-color: white;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 15px;
+}
+
+.favourite-place-card-heading {
+    color: #0f0e46;
+    font-family: "Roboto";
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.favourite-place-card-description {
+    color: #6c6b70;
+    font-family: "Roboto";
+    font-size: 13px;
+}
+
+.favourite-place-card-image {
+    width: 80px;
+    height: 100px;
+}
+
+.favourite-place-card-text-container {
+    margin-right: 15px;
+}
+
+.detailed-view-bg-container {
+    background-image: url("https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/seabg.png");
+    height: 100vh;
+    background-size: cover;
+}
+
+.detailed-view-heading {
+    color: white;
+    font-family: "Roboto";
+    font-size: 28px;
+    font-weight: bold;
+    padding: 24px;
+}
+
+.detailed-view-card-container {
+    background-color: white;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    margin: 24px;
+}
+
+.detailed-view-card-heading {
+    color: #0f0e46;
+    font-family: "Roboto";
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.detailed-view-card-description {
+    color: #6c6b70;
+    font-family: "Roboto";
+    font-size: 13px;
+}
+
+.detailed-view-card-text-container {
+    padding: 16px;
+}
+</style>
+</head>
+
+<body>
+    <div id="sectionLogin" class="login-box">
+        <h1>Login</h1>
+        <form>
+            <label>Email</label>
+            <input type="email" placeholder=" Enter a valid email address" />
+            <label>Password</label>
+            <input type="password" placeholder="Enter password" />
+            <input type="button" value="Submit" onclick="display('sectionBook')" />
+        </form>
+    </div>
+    
+    <div id="sectionBook">
+    <h1>Library Quest</h1>
+    
+    <div id="filters">
+        <input type="text" id="searchInput" placeholder="Search by title or author">
+        <select id="sortSelect">
+            <option value="title">Sort by Title</option>
+            <option value="author">Sort by Author</option>
+            <option value="publisher">Sort by Publisher</option>
+        </select>
+    </div>
+
+    <div id="bookList">
+        <!-- Book items will be dynamically added here -->
+    </div>
+
+    <div id="cart">
+        <h2>Buy Books here</h2>
+        <ul id="cartItems">
+            <!-- Cart items will be dynamically added here -->
+        </ul>
+        <button id="clearCartBtn">Clear All</button>
+    </div>
+    </div>
+
+    <script>
+        const books = [{
+    id: 1,
+    title: "Adventures of Tom Sawyer",
+    author: "Mark Twain",
+    description: "It tells about many breathataking adventures performed by tom swayer"
+},
+{
+    id: 2,
+    title: "Ben Hur",
+    author: "Lewis Wallace",
+    description: "It explores Ben's life"
+},
+{
+    id: 3,
+    title: "India Divided",
+    author: "Dr.Rajendhra Prasad",
+    description: "It tells about division of India"
+},
+{
+    id: 4,
+    title:"A Better India:A Better World",
+    author:"R.K.Narayana Murthy",
+    description:"It tells about how India can totally change the world to a better version"
+},
+
+];
+
+const bookList = document.getElementById("bookList");
+const searchInput = document.getElementById("searchInput");
+const sortSelect = document.getElementById("sortSelect");
+const cartItems = document.getElementById("cartItems");
+const clearCartBtn = document.getElementById("clearCartBtn");
+
+let cart = [];
+
+// Display all books initially
+displayBooks(books);
+
+// Event listeners for search, sort, and cart
+searchInput.addEventListener("input", handleSearch);
+sortSelect.addEventListener("change", handleSort);
+bookList.addEventListener("click", addToCart);
+clearCartBtn.addEventListener("click", clearCart);
+
+function displayBooks(booksArray) {
+// Clear the book list
+bookList.innerHTML = "";
+
+booksArray.forEach(book => {
+    const bookItem = document.createElement("div");
+    bookItem.classList.add("book");
+
+    const title = document.createElement("h2");
+    title.textContent = book.title;
+    bookItem.appendChild(title);
+
+    const author = document.createElement("p");
+    author.textContent = "By " + book.author;
+    bookItem.appendChild(author);
+
+    const description = document.createElement("p");
+    description.textContent = book.description;
+    bookItem.appendChild(description);
+
+    const image = document.createElement("img");
+    image.src = book.image;
+    bookItem.appendChild(image);
+
+    const addToCartBtn = document.createElement("button");
+    addToCartBtn.textContent = "Add to Cart";
+    addToCartBtn.dataset.id = book.id;
+    bookItem.appendChild(addToCartBtn);
+
+    bookList.appendChild(bookItem);
+});
+}
+
+function handleSearch() {
+const searchText = searchInput.value.toLowerCase();
+
+const filteredBooks = books.filter(book => {
+    const title = book.title.toLowerCase();
+    const author = book.author.toLowerCase();
+    return title.includes(searchText) || author.includes(searchText);
+});
+
+displayBooks(filteredBooks);
+}
+
+function handleSort() {
+const sortKey = sortSelect.value;
+
+const sortedBooks = books.sort((a, b) => {
+    const itemA = a[sortKey].toLowerCase();
+    const itemB = b[sortKey].toLowerCase();
+
+    if (itemA < itemB) {
+        return -1;
+    }
+    if (itemA > itemB) {
+        return 1;
+    }
+    return 0;
+});
+
+displayBooks(sortedBooks);
+}
+
+function addToCart(event) {
+if (event.target.tagName === "BUTTON") {
+    const bookId = parseInt(event.target.dataset.id);
+    const selectedBook = books.find(book => book.id === bookId);
+
+    if (selectedBook) {
+        cart.push(selectedBook);
+        updateCartUI();
+    }
+}
+}
+
+function updateCartUI() {
+cartItems.innerHTML = "";
+
+cart.forEach(book => {
+    const cartItem = document.createElement("li");
+    cartItem.textContent = book.title;
+    cartItems.appendChild(cartItem);
+});
+}
+
+function clearCart() {
+cart = [];
+updateCartUI();
+}
+    </script>
+</body>
+
+</html>
